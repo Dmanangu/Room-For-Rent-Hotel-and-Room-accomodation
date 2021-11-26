@@ -1,0 +1,177 @@
+.sideRP {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+.leftRP {
+  left: 0;
+  background: linear-gradient(#0adfef, #2551a2);
+}
+
+.rightRP {
+  right: 0;
+  background: white;
+}
+
+.headerRP {
+  color: white;
+  text-align: left;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-left: 40px;
+}
+
+.detailsRP {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.form-groupRP {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rentalRP {
+  position: left;
+  text-align: left;
+  color: black;
+  display: flex;
+  width: 400px;
+  height: 60px;
+  line-height: 3rem;
+  background-color: white;
+  margin: 8px;
+  border-radius: 5%;
+  box-shadow: 2px 2px 4px black;
+  opacity: 0.9;
+  font-weight: 550;
+}
+
+.rentalRP:hover {
+  align: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  background-color: #2551a2;
+  opacity: 1;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.loftRP {
+  position: left;
+  text-align: left;
+  color: black;
+  display: flex;
+  width: 400px;
+  height: 60px;
+  line-height: 3rem;
+  background-color: white;
+  margin: 8px;
+  border-radius: 5%;
+  box-shadow: 2px 2px 4px black;
+  opacity: 0.9;
+  font-weight: 550;
+}
+
+.loftRP:hover {
+  align: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  background-color: #2551a2;
+  opacity: 1;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.condoRP {
+  position: left;
+  text-align: left;
+  color: black;
+  display: flex;
+  width: 400px;
+  height: 60px;
+  line-height: 3rem;
+  background-color: white;
+  margin: 8px;
+  border-radius: 5%;
+  box-shadow: 2px 2px 4px black;
+  opacity: 0.9;
+  font-weight: 550;
+}
+
+.condoRP:hover {
+  align: center;
+  cursor: pointer;
+  font-size: 1.8rem;
+  background-color: #2551a2;
+  opacity: 1;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.footerRP {
+  margin-top: 2rem;
+}
+
+.btnnextRP {
+  font-size: 1rem;
+  float: right;
+  text-align: center;
+  display: grid;
+  width: 100px;
+  height: 42.5px;
+  padding-left: 1px;
+  line-height: 2.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 49, 81);
+  margin: 7px;
+  border-radius: 15%;
+  box-shadow: 1px 1px 2px black;
+  opacity: 0.9;
+  font-weight: 550;
+}
+
+.btnnextRP:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 15px rgba(0, 49, 81, 0.4);
+  cursor: pointer;
+  opacity: 2;
+}
+
+.btnbackRP {
+  font-size: 1rem;
+  float: left;
+  text-align: center;
+  display: grid;
+  width: 100px;
+  height: 42.5px;
+  padding-left: 1px;
+  line-height: 2.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 49, 81);
+  margin: 7px;
+  border-radius: 15%;
+  box-shadow: 1px 1px 2px black;
+  opacity: 0.9;
+  font-weight: 550;
+}
+
+.btnbackRP:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 15px rgba(0, 49, 81, 0.4);
+  cursor: pointer;
+  opacity: 2;
+}
