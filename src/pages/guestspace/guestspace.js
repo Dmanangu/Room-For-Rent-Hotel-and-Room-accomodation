@@ -3,9 +3,6 @@ import "./guestspace.css";
 import { Link } from "react-router-dom";
 
 export class Guestspace extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="base-containterGS">

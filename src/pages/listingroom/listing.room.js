@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./listing.room.css";
 
 export class ListingRoom extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="base-containter-ls">

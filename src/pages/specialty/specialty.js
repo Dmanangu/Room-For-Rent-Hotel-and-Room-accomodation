@@ -3,9 +3,6 @@ import "./specialty.css";
 import { Link } from "react-router-dom";
 
 export class Specialty extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="base-containterSpec">

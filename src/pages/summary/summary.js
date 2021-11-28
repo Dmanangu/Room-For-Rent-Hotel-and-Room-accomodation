@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export class End extends React.Component {
+export class Summary extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
       <div>
-        End
+        Summary
         <div className="footer">
-          <Link to="/Summary">
+          <Link to="/ListingRoom">
             <button type="button" className="btnback">
               Back
             </button>

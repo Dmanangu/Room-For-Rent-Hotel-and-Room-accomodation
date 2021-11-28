@@ -1,16 +1,13 @@
 import React from "react";
-import entire_home from "../pictures/entire_home.png";
-import pets from "../pictures/pets.png";
-import unique_place from "../pictures/unique_place.png";
+import entire_home from "../../assets/images/entire_home.png";
+import pets from "../../assets/images/pets.png";
+import unique_place from "../../assets/images/unique_place.png";
 import { Link } from "react-router-dom";
 import { Navbar, NavDropdown } from "react-bootstrap";
 import { Row, Col, Container } from "react-bootstrap";
 import "./homepage.css";
 
 export class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="home-page">

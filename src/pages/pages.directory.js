@@ -16,8 +16,7 @@ import {
   Register,
   ListingRoom,
   Summary,
-  End,
-} from "./loginreg/exports.js";
+} from "./exports.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const HostPage = () => (
@@ -27,9 +26,6 @@ const HostPage = () => (
 );
 
 export class Pages extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div>
@@ -53,7 +49,6 @@ export class Pages extends React.Component {
             <Route exact path="/Pricing" element={<Pricing />} />
             <Route exact path="/ListingRoom" element={<ListingRoom />} />
             <Route exact path="/Summary" element={<Summary />} />
-            <Route exact path="/End" element={<End />} />
             <Route exact path="/Login" element={<Login />} />
             <Route exact path="/Register" element={<Register />} />
           </Routes>

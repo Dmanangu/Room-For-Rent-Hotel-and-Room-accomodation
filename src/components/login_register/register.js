@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "./pictures/logo.png"; //location of the logo
+import logoImg from "../../assets/images/logo.png"; //location of the logo
 import Popup from "reactjs-popup"; //npm install reactjs-popup --save
 import "reactjs-popup/dist/index.css";
 

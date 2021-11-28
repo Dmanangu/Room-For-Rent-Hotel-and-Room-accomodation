@@ -3,9 +3,6 @@ import "./address.css";
 import { Link } from "react-router-dom";
 
 export class Address extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="base-containterA">

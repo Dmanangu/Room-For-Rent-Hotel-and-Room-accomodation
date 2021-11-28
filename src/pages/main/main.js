@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.css";
 import { Link } from "react-router-dom";
-import image from "../pictures/image3.jpg";
+import image from "../../assets/images/image3.jpg";
 
 const SpecialtyPage = () => (
   <div>
@@ -10,9 +10,6 @@ const SpecialtyPage = () => (
 );
 
 export class Main extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="main">

@@ -3,9 +3,6 @@ import "./placedescription.css";
 import { Link } from "react-router-dom";
 
 export class Placedescription extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div className="base-containter">
