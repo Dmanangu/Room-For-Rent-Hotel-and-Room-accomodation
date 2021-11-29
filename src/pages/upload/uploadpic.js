@@ -33,7 +33,7 @@ export class Upload extends React.Component {
                 Back
               </button>
             </Link>
-            <Link to="/Maps">
+            <Link to="/Placedescription">
               <button type="button" className="btnnextUpic">
                 Next
               </button>

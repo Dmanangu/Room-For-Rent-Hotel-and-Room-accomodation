@@ -22,7 +22,7 @@ export class Placedescription extends React.Component {
             <input type="text" name="description" className="desPD" />
           </div>
           <div className="footerPD">
-            <Link to="/Maps">
+            <Link to="/Upload">
               <button type="button" className="btnbackPD">
                 Back
               </button>

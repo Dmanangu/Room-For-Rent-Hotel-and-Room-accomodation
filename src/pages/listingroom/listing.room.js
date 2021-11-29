@@ -18,7 +18,7 @@ export class ListingRoom extends React.Component {
                 Back
               </button>
             </Link>
-            <Link to="/Summary">
+            <Link to="/Maps">
               <button type="button" className="btn-save-ls">
                 Save
               </button>

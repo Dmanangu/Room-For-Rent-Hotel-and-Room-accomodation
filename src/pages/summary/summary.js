@@ -10,7 +10,7 @@ export class Summary extends React.Component {
       <div>
         Summary
         <div className="footer">
-          <Link to="/ListingRoom">
+          <Link to="/Maps">
             <button type="button" className="btnback">
               Back
             </button>
