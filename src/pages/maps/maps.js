@@ -1,27 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper } from "google-maps-react";
 
-export class Maps extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const mapStyles = {
+  width: "100%",
+  height: "100%",
+};
+
+export class Maps extends Component {
   render() {
     return (
-      <div>
-        <h1>Maps</h1>
-        <div className="footerMap">
-          <Link to="/Upload">
-            <button type="button" className="btnbackMap">
-              Back
-            </button>
-          </Link>
-          <Link to="/Placedescription">
-            <button type="button" className="btnnextMap">
-              Next
-            </button>
-          </Link>
-        </div>
-      </div>
+      <Map
+        google={this.props.google}
+        zoom={14}
+        style={mapStyles}
+        initialCenter={{
+          lat: -1.2884,
+          lng: 36.8233,
+        }}
+      />
     );
   }
 }
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyAlJ8_nrinzUNUeTafuHSWS-F1ABdglzH8",
+})(Maps);

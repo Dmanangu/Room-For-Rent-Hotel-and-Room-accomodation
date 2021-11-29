@@ -6,38 +6,74 @@ export default class UploadImages extends Component {
     super(props);
 
     this.state = {
-      currentFile: undefined,
-      previewImage: undefined,
-      progress: 0,
-      message: "",
+      selectedFiles: undefined,
+      previewImages: [],
+      progressInfos: [],
+      message: [],
 
       imageInfos: [],
     };
   }
 
-  selectFile(event) {
+  selectFiles(event) {
+    let images = [];
+
+    for (let i = 0; i < event.target.files.length; i++) {
+      images.push(URL.createObjectURL(event.target.files[i]));
+    }
+
     this.setState({
-      currentFile: event.target.files[0],
-      previewImage: URL.createObjectURL(event.target.files[0]),
-      progress: 0,
-      message: "",
+      progressInfos: [],
+      message: [],
+      selectedFiles: event.target.files,
+      previewImages: images,
     });
   }
 
-  upload() {
-    this.setState({
-      progress: 0,
-    });
+  uploadImages() {
+    const selectedFiles = this.state.selectedFiles;
 
-    UploadService.upload(this.state.currentFile, (event) => {
+    let _progressInfos = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      _progressInfos.push({ percentage: 0, fileName: selectedFiles[i].name });
+    }
+
+    this.setState(
+      {
+        progressInfos: _progressInfos,
+        message: [],
+      },
+      () => {
+        for (let i = 0; i < selectedFiles.length; i++) {
+          this.upload(i, selectedFiles[i]);
+        }
+      }
+    );
+  }
+
+  upload(idx, file) {
+    let _progressInfos = [...this.state.progressInfos];
+
+    UploadService.upload(file, (event) => {
+      _progressInfos[idx].percentage = Math.round(
+        (100 * event.loaded) / event.total
+      );
       this.setState({
-        progress: Math.round((100 * event.loaded) / event.total),
+        progressInfos: _progressInfos,
       });
     })
-      .then((response) => {
-        this.setState({
-          message: response.data.message,
+      .then(() => {
+        this.setState((prev) => {
+          let nextMessage = [
+            ...prev.message,
+            "Uploaded the image successfully: " + file.name,
+          ];
+          return {
+            message: nextMessage,
+          };
         });
+
         return UploadService.getFiles();
       })
       .then((files) => {
@@ -45,11 +81,17 @@ export default class UploadImages extends Component {
           imageInfos: files.data,
         });
       })
-      .catch((err) => {
-        this.setState({
-          progress: 0,
-          message: "Could not upload the image!",
-          currentFile: undefined,
+      .catch(() => {
+        _progressInfos[idx].percentage = 0;
+        this.setState((prev) => {
+          let nextMessage = [
+            ...prev.message,
+            "Could not upload the image: " + file.name,
+          ];
+          return {
+            progressInfos: _progressInfos,
+            message: nextMessage,
+          };
         });
       });
   }
@@ -63,7 +105,7 @@ export default class UploadImages extends Component {
   }
 
   render() {
-    const { currentFile, previewImage, progress, message, imageInfos } =
+    const { selectedFiles, previewImages, progressInfos, message, imageInfos } =
       this.state;
 
     return (
@@ -71,47 +113,79 @@ export default class UploadImages extends Component {
         <div className="row">
           <div className="col-8">
             <label className="btn btn-default p-0">
-              <input type="file" accept="image/*" onChange={this.selectFile} />
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={this.selectFiles}
+              />
             </label>
           </div>
 
           <div className="col-4">
             <button
               className="btn btn-success btn-sm"
-              disabled={!currentFile}
-              onClick={this.upload}
+              disabled={!selectedFiles}
+              onClick={this.uploadImages}
             >
               Upload
             </button>
           </div>
         </div>
 
-        {currentFile && (
-          <div className="progress my-3">
-            <div
-              className="progress-bar progress-bar-info progress-bar-striped"
-              role="progressbar"
-              aria-valuenow={progress}
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style={{ width: progress + "%" }}
-            >
-              {progress}%
+        {progressInfos &&
+          progressInfos.map((progressInfo, index) => (
+            <div className="mb-2" key={index}>
+              <span>{progressInfo.fileName}</span>
+              <div className="progress">
+                <div
+                  className="progress-bar progress-bar-info"
+                  role="progressbar"
+                  aria-valuenow={progressInfo.percentage}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={{ width: progressInfo.percentage + "%" }}
+                >
+                  {progressInfo.percentage}%
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
 
-        {previewImage && (
+        {previewImages && (
           <div>
-            <img className="previewUpic" src={previewImage} alt="" />
+            {previewImages.map((img, i) => {
+              return (
+                <img className="preview" src={img} alt={"image-" + i} key={i} />
+              );
+            })}
           </div>
         )}
 
-        {message && (
-          <div className="alert alert-secondary mt-3" role="alert">
-            {message}
+        {message.length > 0 && (
+          <div className="alert alert-secondary" role="alert">
+            <ul>
+              {message.map((item, i) => {
+                return <li key={i}>{item}</li>;
+              })}
+            </ul>
           </div>
         )}
+
+        <div className="card mt-3">
+          <div className="card-header">List of Files</div>
+          <ul className="list-group list-group-flush">
+            {imageInfos &&
+              imageInfos.map((img, index) => (
+                <li className="list-group-item" key={index}>
+                  <p>
+                    <a href={img.url}>{img.name}</a>
+                  </p>
+                  <img src={img.url} alt={img.name} height="80px" />
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
     );
   }
