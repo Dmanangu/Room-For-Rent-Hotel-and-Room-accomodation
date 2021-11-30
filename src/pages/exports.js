@@ -1,4 +1,3 @@
-import "../components/login_register/style.css";
 export { Login } from "../components/login_register/login";
 export { Register } from "../components/login_register/register";
 

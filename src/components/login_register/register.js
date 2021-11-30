@@ -1,82 +1,97 @@
 import React from "react";
-import logoImg from "../../assets/images/logo.png"; //location of the logo
-import Popup from "reactjs-popup"; //npm install reactjs-popup --save
-import "reactjs-popup/dist/index.css";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
+import images from "../../assets/images/images.jpg";
+import "./register.css";
 
 export class Register extends React.Component {
-  state = {
-    checkbox: "",
-    checkboxValid: false,
-    errorMsg: {},
-    selectedCheckBox: 0,
-  };
-
-  validateForm = () => {
-    const { checkboxValid } = this.state;
-    this.setState({
-      formValid: checkboxValid,
-    });
-  };
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
-      <div className="base-container">
-        <div className="header">Register</div>
-        <div className="content">
-          <div className="image">
-            <img src={logoImg} />
-          </div>
-          <div className="form">
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+      <div className="contentRegister">
+        <div className="sideRegister rightRegister">
+          <div className="centerRegister">
+            <div className="picLogo">
+              <img src={logo} className="logoRegister" alt="Logo" />
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="email" name="email" placeholder="email" />
+            <div className="signtxtRegister">Sign Up</div>
+
+            <div className="nameaddRegister">
+              <input
+                type="text"
+                name="name"
+                className="nameRegister"
+                placeholder="Name"
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Address</label>
-              <input type="text" name="Address" placeholder="Address" />
+
+            <div className="emailaddRegister">
+              <input
+                type="email"
+                name="password"
+                className="emailRegister"
+                placeholder="Email"
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="phone">Mobile Number</label>
-              <input type="tel" id="phone" placeholder="+63" country={"ph"} />
+
+            <div className="addressRegister">
+              <input
+                type="text"
+                name="email"
+                className="addRegister"
+                placeholder="Address"
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="password" />
+
+            <div className="phoneaddRegister">
+              <input
+                type="tel"
+                name="password"
+                className="numberRegister"
+                placeholder="Phone Number"
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Confirm Password</label>
-              <input type="password" name="password" placeholder="password" />
+
+            <div className="passaddRegister">
+              <input
+                type="password"
+                name="email"
+                className="passRegister"
+                placeholder="Password"
+              />
             </div>
-            <div className="checkbox">
-              <input type="checkbox" />
-              <label htmlFor="checkbox">
-                I agree in the terms and conditions
-              </label>
+
+            <div className="confpassRegister">
+              <input
+                type="password"
+                name="password"
+                className="confirmRegister"
+                placeholder="Confirm Password"
+              />
             </div>
-          </div>
-        </div>
-        <div className="footer">
-          <button type="button" className="btn">
-            Register
-          </button>
-        </div>
-        <div className="About">
-          <Popup
-            trigger={
-              <button type="button" className="about">
-                About
+
+            <div className="btnRegister">
+              <button type="button" className="logRegister">
+                <div className="logbtnRegister"> Sign Up </div>
               </button>
-            }
-            position="left"
-          >
-            <div>About Application</div>
-          </Popup>
+            </div>
+            <div className="signupRegister">
+              <Link to="/Login">
+                <button type="button" className="supRegister">
+                  <div className="signRegister">
+                    {" "}
+                    Already Have an Account? Sign In{" "}
+                  </div>
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="sideRegister leftRegister">
+          <div className="leftpicRegister">
+            <Link to="/">
+              <img src={images} className="imageleftRegister" alt="letrato" />
+            </Link>
+          </div>
         </div>
       </div>
     );
